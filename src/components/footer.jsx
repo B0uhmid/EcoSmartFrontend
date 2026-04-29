@@ -12,7 +12,7 @@ export default function Footer() {
 
       <footer
         className="flex flex-col items-center justify-around w-full py-12 text-sm 
-        bg-gradient-to-t from-green-50 via-green-10 to-white text-green-700"
+        bg-linear-to-t from-green-50 via-green-10 to-white text-green-700"
       >
         {/* Logo */}
         <div className="flex items-center justify-center">
