@@ -60,7 +60,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         <div
-            className={`fixed inset-0 z-[100] bg-gray/80 backdrop-blur flex flex-col items-center justify-center gap-8 text-lg text-green-900 transition-transform duration-300 sm:hidden ${
+            className={`fixed inset-0 z-100 bg-gray/80 backdrop-blur flex flex-col items-center justify-center gap-8 text-lg text-green-900 transition-transform duration-300 sm:hidden ${
                 isOpen ? "translate-x-0" : "-translate-x-full"
             }`}
         >
