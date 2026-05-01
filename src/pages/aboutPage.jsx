@@ -8,7 +8,7 @@ export default function AboutPage() {
         }
       `}</style>
 
-      <div className="py-4 bg-gradient-to-t from-white via-green-50 to-white">
+      <div className="py-24 bg-gradient-to-t from-white via-green-100 to-white">
         <h1 className="text-3xl font-semibold text-center mx-auto text-green-900">
           About EcoSmart
         </h1>
