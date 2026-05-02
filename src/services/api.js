@@ -1,10 +1,10 @@
-const API_URL = import.meta.env.BACK_URL
+const API_URL = import.meta.env.VITE_BACK_URL
 
 export const predictFull = async (lotData) => {
     const res = await fetch(`${API_URL}/predict/full`, {
-        method:  "POST",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify(lotData)
+        body: JSON.stringify(lotData)
     })
     return res.json()
 }
