@@ -1,3 +1,6 @@
+import Footer from "../components/footer.jsx";
+import Divider from "../components/divider.jsx";
+
 export default function AboutPage() {
   return (
     <>
@@ -8,7 +11,7 @@ export default function AboutPage() {
         }
       `}</style>
 
-      <div className="py-24 bg-gradient-to-t from-white via-green-100 to-white">
+      <div className=" bg-gradient-to-t from-white via-green-100 to-white pt-14">
         <h1 className="text-3xl font-semibold text-center mx-auto text-green-900">
           About EcoSmart
         </h1>
@@ -18,7 +21,7 @@ export default function AboutPage() {
           promote sustainable living.
         </p>
 
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 px-4 md:px-0 py-10 relative">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-14 px-4 md:px-0 py-10 relative">
           {/* Glow effect */}
           <div className="size-[520px] rounded-full absolute blur-[300px] -z-10 bg-green-100"></div>
 
@@ -98,6 +101,8 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+      <Divider />
+      <Footer />
     </>
   );
 }
