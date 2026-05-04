@@ -31,6 +31,7 @@ export default function FormPage() {
             });
             setResult(data);
         } catch (err) {
+            console.error("Prediction error:", err);
             setError("Erreur lors de la prédiction. Vérifiez votre API.");
         } finally {
             setLoading(false);
