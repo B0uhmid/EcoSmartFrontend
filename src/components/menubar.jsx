@@ -24,7 +24,7 @@ export default function Menubar() {
                         </svg>
 
                         <span
-                            className="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-green-800 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+                            className="invisible absolute inset-s-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-green-800 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
               Dashboard
             </span>
                     </Link>
@@ -39,7 +39,7 @@ export default function Menubar() {
                                   <path fill="#31a044" d="M15.5 7A2.5 2.5 0 0 1 18 9.5v6a2.5 2.5 0 0 1-2.5 2.5h-6A2.5 2.5 0 0 1 7 15.5v-6A2.5 2.5 0 0 1 9.5 7zm-6 1A1.5 1.5 0 0 0 8 9.5v6A1.5 1.5 0 0 0 9.5 17h6a1.5 1.5 0 0 0 1.5-1.5v-6A1.5 1.5 0 0 0 15.5 8zm1 5a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3m0 1a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1m5 0a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zM9.65 2.085a2.5 2.5 0 0 1 3.061 1.768L13.286 6h-1.035l-.506-1.888a1.5 1.5 0 0 0-1.837-1.06L4.112 4.604a1.5 1.5 0 0 0-1.06 1.837l1.553 5.795A1.5 1.5 0 0 0 6 13.347v.999a2.5 2.5 0 0 1-2.361-1.85L2.086 6.7a2.5 2.5 0 0 1 1.768-3.062zM10.5 9a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3m0 1a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1m5 0a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"></path>
                               </svg>
                       <span
-                          className="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+                          className="invisible absolute inset-s-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
                 EcoSmart Form
               </span>
                     </Link>
@@ -55,7 +55,7 @@ export default function Menubar() {
                       </svg>
 
                       <span
-                          className="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+                          className="invisible absolute inset-s-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
                 Billing
               </span>
                     </a>
@@ -71,7 +71,7 @@ export default function Menubar() {
                       </svg>
 
                       <span
-                          className="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+                          className="invisible absolute inset-s-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
                 Invoices
               </span>
                     </a>
@@ -87,7 +87,7 @@ export default function Menubar() {
                       </svg>
 
                       <span
-                          className="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+                          className="invisible absolute inset-s-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
                 Account
               </span>
                     </a>
@@ -102,8 +102,8 @@ export default function Menubar() {
                className="group relative flex w-full justify-center rounded-lg px-2 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700">
                 <svg width="0.5em" height="0.5em" className="size-7 opacity-75 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#31a044" fill-rule="evenodd" d="M1.25 8.75v8.5h1.5v-5.452l.096-.106c.572-.632 1.306-1.442 2.654-1.442c.29 0 .648.092.912.259c.255.16.338.327.338.491v6.25h1.5v-5.995c.522-.514 1.224-1.005 2.25-1.005c.29 0 .648.092.912.259c.255.16.338.327.338.491v6.25h1.5V11c0-.836-.5-1.42-1.036-1.759A3.3 3.3 0 0 0 10.5 8.75c-1.197 0-2.093.449-2.745.95a2.5 2.5 0 0 0-.541-.459A3.3 3.3 0 0 0 5.5 8.75c-1.182 0-2.09.451-2.75.953V8.75zm22 5h-6.896a2.751 2.751 0 0 0 4.805.954l1.177.93A4.25 4.25 0 1 1 23.25 13zm-6.896-1.5a2.751 2.751 0 0 1 5.293 0z" clip-rule="evenodd"/></svg>
               <span
-                  className="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-green-800 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
-        About us
+                  className="invisible absolute inset-s-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-green-800 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+        About
       </span>
             </Link>
           </div>

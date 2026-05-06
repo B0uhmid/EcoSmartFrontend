@@ -4,6 +4,7 @@ import AboutPage from "./pages/aboutPage.jsx";
 import { Route, Routes } from "react-router-dom";
 
 import FormPage from "./pages/formPage.jsx";
+import DashboardPage from "./pages/dashboardPage";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
             <div className="ml-16 flex-1 flex flex-col">
                 <div className="flex-1 overflow-auto">
                     <Routes>
+                        <Route path="/dashboard" element=<DashboardPage/>></Route>
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/ecosmartform" element={<FormPage />} />
                     </Routes>
