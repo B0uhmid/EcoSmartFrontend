@@ -100,12 +100,10 @@ export default function Menubar() {
           <div className="sticky inset-x-0 bottom-0 border-t border-gray-100 bg-white p-2">
             <Link to="/about"
                className="group relative flex w-full justify-center rounded-lg px-2 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" className="size-7 opacity-75 ">
-                    <path fill="#31a044" fillRule="evenodd" d="M256 42.667C138.18 42.667 42.667 138.179 42.667 256c0 117.82 95.513 213.334 213.333 213.334c117.822 0 213.334-95.513 213.334-213.334S373.822 42.667 256 42.667m0 384c-94.105 0-170.666-76.561-170.666-170.667S161.894 85.334 256 85.334c94.107 0 170.667 76.56 170.667 170.666S350.107 426.667 256 426.667m26.714-256c0 15.468-11.262 26.667-26.497 26.667c-15.851 0-26.837-11.2-26.837-26.963c0-15.15 11.283-26.37 26.837-26.37c15.235 0 26.497 11.22 26.497 26.666m-48 64h42.666v128h-42.666z"></path>
-                </svg>
+                <svg width="0.5em" height="0.5em" className="size-7 opacity-75 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#31a044" fill-rule="evenodd" d="M1.25 8.75v8.5h1.5v-5.452l.096-.106c.572-.632 1.306-1.442 2.654-1.442c.29 0 .648.092.912.259c.255.16.338.327.338.491v6.25h1.5v-5.995c.522-.514 1.224-1.005 2.25-1.005c.29 0 .648.092.912.259c.255.16.338.327.338.491v6.25h1.5V11c0-.836-.5-1.42-1.036-1.759A3.3 3.3 0 0 0 10.5 8.75c-1.197 0-2.093.449-2.745.95a2.5 2.5 0 0 0-.541-.459A3.3 3.3 0 0 0 5.5 8.75c-1.182 0-2.09.451-2.75.953V8.75zm22 5h-6.896a2.751 2.751 0 0 0 4.805.954l1.177.93A4.25 4.25 0 1 1 23.25 13zm-6.896-1.5a2.751 2.751 0 0 1 5.293 0z" clip-rule="evenodd"/></svg>
               <span
                   className="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-green-800 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
-        About
+        About us
       </span>
             </Link>
           </div>
