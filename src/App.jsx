@@ -16,7 +16,7 @@ function App() {
             <div className="ml-16 flex-1 flex flex-col">
                 <div className="flex-1 overflow-auto">
                     <Routes>
-                        <Route path="/dashboard" element=<DashboardPage/>></Route>
+                        <Route path="/dashboard" element={<DashboardPage />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/ecosmartform" element={<FormPage />} />
                     </Routes>

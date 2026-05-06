@@ -1,16 +1,52 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# EcoSmartX Frontend API
 
-Currently, two official plugins are available:
+## Project Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ENGLISH :
+Frontend developed with **ReactJS** to predict:
 
-## React Compiler
+* the category of recyclable waste
+* the estimated resale price
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## FRANCAIS :
+Frontend développée avec **ReactJS** pour prédire :
 
-## Expanding the ESLint configuration
+* la catégorie des déchets recyclables
+* le prix de revente estimé
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Architecture
+
+```
+src/
+├── assets/
+├── services/
+├── pages/
+├── components/
+├── App.jsx
+```
+
+---
+
+## Technologies
+
+* ReactJS + vite
+* Tailwind CSS
+
+---
+
+## Launch the project
+
+```bash
+npm run dev
+```
+
+---
+
+## Team (Contributors)
+
+* Hammami Ahmed
+* Jelliti Ismail 
