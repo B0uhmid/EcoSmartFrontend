@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import brandLogo from "../assets/images/ecoSmart.svg";
 import {
   PieChart,
   Pie,
@@ -118,14 +119,11 @@ const DonutChart = ({ data, title }) => {
     value,
   }));
 
-  const activeItem =
-    activeIndex !== null ? formattedData[activeIndex] : null;
+  const activeItem = activeIndex !== null ? formattedData[activeIndex] : null;
 
   return (
     <div className="bg-white rounded-2xl shadow p-5 border border-green-100 h-105">
-      <h2 className="text-green-700 font-semibold text-lg mb-4">
-        {title}
-      </h2>
+      <h2 className="text-green-700 font-semibold text-lg mb-4">{title}</h2>
 
       <div className="w-full h-80 relative">
         <ResponsiveContainer width="100%" height="100%">
@@ -148,9 +146,7 @@ const DonutChart = ({ data, title }) => {
                   key={index}
                   fill={DONUT_COLORS[index % DONUT_COLORS.length]}
                   opacity={
-                    activeIndex === null || activeIndex === index
-                      ? 1
-                      : 0.4
+                    activeIndex === null || activeIndex === index ? 1 : 0.4
                   }
                   className="cursor-pointer transition-all duration-300"
                 />
@@ -161,8 +157,6 @@ const DonutChart = ({ data, title }) => {
             <Legend verticalAlign="bottom" height={36} />
           </PieChart>
         </ResponsiveContainer>
-
-        
       </div>
     </div>
   );
@@ -253,11 +247,41 @@ export default function DashboardPage() {
   return (
     <div className="p-6 flex flex-col gap-10 bg-linear-to-t from-white via-green-50 to-white min-h-screen">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-green-800">📊 Dashboard</h1>
-        <p className="text-gray-500 text-sm mt-1">
-          Vue globale de vos données de recyclage
-        </p>
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        {/* Left side */}
+        <div>
+          <h1 className="text-4xl font-extrabold text-green-800 tracking-tight flex items-center gap-2">
+            <span className="grid size-10 place-content-center">
+              <img src={brandLogo} />
+            </span>{" "}
+            Dashboard
+          </h1>
+
+          <p className="text-gray-500 text-sm mt-2">
+            Vue globale de vos données de recyclage et performance
+            environnementale
+          </p>
+
+          {/* optional small metadata */}
+          <p className="text-xs text-gray-400 mt-1">
+            Dernière mise à jour: aujourd’hui
+          </p>
+        </div>
+
+        {/* Right side quick stats / badges */}
+        <div className="flex gap-2 flex-wrap md:justify-end">
+          <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-medium">
+            ♻️ Recyclage
+          </span>
+
+          <span className="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-medium">
+            📦 {stats?.total_lots || 0} lots
+          </span>
+
+          <span className="px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs font-medium">
+            ⚡ Live data
+          </span>
+        </div>
       </div>
 
       {/*Global Stats Cards*/}
