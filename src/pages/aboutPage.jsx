@@ -11,7 +11,7 @@ export default function AboutPage() {
         }
       `}</style>
 
-      <div className=" bg-gradient-to-t from-white via-green-100 to-white pt-14">
+      <div className=" bg-linear-to-t from-white via-green-100 to-white pt-14">
         <h1 className="text-3xl font-semibold text-center mx-auto text-green-900">
           About EcoSmart
         </h1>
@@ -23,7 +23,7 @@ export default function AboutPage() {
 
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-14 px-4 md:px-0 py-10 relative">
           {/* Glow effect */}
-          <div className="size-[520px] rounded-full absolute blur-[300px] -z-10 bg-green-100"></div>
+          <div className="size-130 rounded-full absolute blur-[300px] -z-10 bg-green-100"></div>
 
           {/* Image */}
           <img

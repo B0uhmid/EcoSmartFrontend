@@ -122,12 +122,12 @@ const DonutChart = ({ data, title }) => {
     activeIndex !== null ? formattedData[activeIndex] : null;
 
   return (
-    <div className="bg-white rounded-2xl shadow p-5 border border-green-100 h-[420px]">
+    <div className="bg-white rounded-2xl shadow p-5 border border-green-100 h-105">
       <h2 className="text-green-700 font-semibold text-lg mb-4">
         {title}
       </h2>
 
-      <div className="w-full h-[320px] relative">
+      <div className="w-full h-80 relative">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -378,16 +378,19 @@ export default function DashboardPage() {
                 icon="💶"
                 label="Prix moyen"
                 value={`${catStats.prix_moyen} $`}
+                gradient="from-blue-600 to-cyan-500"
               />
               <StatCard
                 icon="💰"
                 label="Prix max"
                 value={`${catStats.prix_max} $`}
+                gradient="from-yellow-500 to-orange-500"
               />
               <StatCard
                 icon="⚖️"
                 label="Poids moyen"
                 value={`${catStats.poids_moyen} kg`}
+                gradient="from-purple-600 to-pink-500"
               />
             </div>
 
