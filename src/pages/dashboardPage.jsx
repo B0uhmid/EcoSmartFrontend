@@ -1,33 +1,48 @@
 import { useEffect, useState, useRef } from "react";
 import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
+import {
   getStats,
   getCategories,
   getSources,
   getStatsByCategory,
 } from "../services/api";
 // ── Animated StatCard ──
-const StatCard = ({ label, value, icon, suffix = "" }) => {
+const StatCard = ({
+  label,
+  value,
+  icon,
+  suffix = "",
+  gradient = "from-green-600 to-emerald-500",
+}) => {
   const [display, setDisplay] = useState(0);
-  const duration = 1500; // ms
+
+  const duration = 1500;
   const frameRate = 60;
   const totalFrames = (duration / 1000) * frameRate;
 
   useEffect(() => {
-    // Extract numeric value
     const numeric = parseFloat(value);
+
     if (isNaN(numeric)) {
       setDisplay(value);
       return;
     }
 
     let frame = 0;
+
     const counter = setInterval(() => {
       frame++;
-      // Ease-out effect
+
       const progress = 1 - Math.pow(1 - frame / totalFrames, 3);
       const current = numeric * progress;
 
-      // Format based on value size
       if (Number.isInteger(numeric)) {
         setDisplay(Math.floor(current));
       } else {
@@ -44,12 +59,37 @@ const StatCard = ({ label, value, icon, suffix = "" }) => {
   }, [value]);
 
   return (
-    <div className="bg-white rounded-2xl shadow p-5 flex flex-col gap-2 hover: border border-green-100">
-      <span className="text-2xl">{icon}</span>
-      <span className="text-gray-500 text-sm">{label}</span>
-      <span className="text-green-800 font-bold text-xl">
-        {display} {suffix}
+    <div className="relative overflow-hidden rounded-2xl border border-green-100 bg-white p-5 group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer">
+      {/* Hover background */}
+      <div
+        className={`absolute inset-0 bg-linear-to-r ${gradient}
+        translate-y-full group-hover:translate-y-0
+        transition-transform duration-500`}
+      />
+
+      {/* Big background icon */}
+      <span
+        className="absolute -top-8 -right-8 text-8xl opacity-10
+        group-hover:opacity-20 group-hover:rotate-12
+        transition-all duration-500 z-0"
+      >
+        {icon}
       </span>
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col gap-2">
+        <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
+          {icon}
+        </span>
+
+        <span className="text-gray-500 group-hover:text-green-100 text-sm transition-colors duration-300">
+          {label}
+        </span>
+
+        <span className="text-green-800 group-hover:text-white font-bold text-2xl transition-colors duration-300">
+          {display} {suffix}
+        </span>
+      </div>
     </div>
   );
 };
@@ -61,6 +101,72 @@ const Badge = ({ label }) => (
   </span>
 );
 
+const DONUT_COLORS = [
+  "#16a34a",
+  "#0ea5e9",
+  "#f59e0b",
+  "#a855f7",
+  "#ef4444",
+  "#14b8a6",
+];
+
+const DonutChart = ({ data, title }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const formattedData = Object.entries(data).map(([name, value]) => ({
+    name,
+    value,
+  }));
+
+  const activeItem =
+    activeIndex !== null ? formattedData[activeIndex] : null;
+
+  return (
+    <div className="bg-white rounded-2xl shadow p-5 border border-green-100 h-[420px]">
+      <h2 className="text-green-700 font-semibold text-lg mb-4">
+        {title}
+      </h2>
+
+      <div className="w-full h-[320px] relative">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={formattedData}
+              cx="50%"
+              cy="50%"
+              innerRadius={70}
+              outerRadius={110}
+              paddingAngle={4}
+              dataKey="value"
+              activeIndex={activeIndex}
+              activeOuterRadius={125}
+              onMouseEnter={(_, index) => setActiveIndex(index)}
+              onMouseLeave={() => setActiveIndex(null)}
+            >
+              {formattedData.map((entry, index) => (
+                <Cell
+                  key={index}
+                  fill={DONUT_COLORS[index % DONUT_COLORS.length]}
+                  opacity={
+                    activeIndex === null || activeIndex === index
+                      ? 1
+                      : 0.4
+                  }
+                  className="cursor-pointer transition-all duration-300"
+                />
+              ))}
+            </Pie>
+
+            <Tooltip />
+            <Legend verticalAlign="bottom" height={36} />
+          </PieChart>
+        </ResponsiveContainer>
+
+        
+      </div>
+    </div>
+  );
+};
 // ── Simple Bar Chart ──
 const BarChart = ({ data, colorClass = "bg-green-500" }) => {
   const max = Math.max(...Object.values(data));
@@ -164,25 +270,31 @@ export default function DashboardPage() {
             icon="📦"
             label="Total lots"
             value={stats.total_lots}
-            suffix=""
+            gradient="from-green-600 to-emerald-500"
           />
+
           <StatCard
             icon="💶"
             label="Prix moyen"
             value={stats.prix_moyen}
             suffix="$"
+            gradient="from-blue-600 to-cyan-500"
           />
+
           <StatCard
             icon="💰"
             label="Prix max"
             value={stats.prix_max}
             suffix="$"
+            gradient="from-yellow-500 to-orange-500"
           />
+
           <StatCard
             icon="⚖️"
             label="Poids moyen"
             value={stats.poids_moyen}
             suffix="kg"
+            gradient="from-purple-600 to-pink-500"
           />
         </div>
       </section>
@@ -209,20 +321,17 @@ export default function DashboardPage() {
           </div>
         </div>
       </section>
-      {/* ── Section 3 : Category Distribution Bar Chart ── */}
-      <section className="bg-white rounded-2xl shadow p-5 border border-green-100">
-        <h2 className="text-green-700 font-semibold text-lg mb-4">
-          📊 Distribution par catégorie
-        </h2>
-        <BarChart data={stats.category_counts} colorClass="bg-green-500" />
-      </section>
+      {/* ── Distribution Charts ── */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <DonutChart
+          title="📊 Distribution par catégorie"
+          data={stats.category_counts}
+        />
 
-      {/* ── Section 4 : Source Distribution Bar Chart ── */}
-      <section className="bg-white rounded-2xl shadow p-5 border border-green-100">
-        <h2 className="text-green-700 font-semibold text-lg mb-4">
-          🏭 Distribution par source
-        </h2>
-        <BarChart data={stats.source_counts} colorClass="bg-blue-400" />
+        <DonutChart
+          title="🏭 Distribution par source"
+          data={stats.source_counts}
+        />
       </section>
 
       {/* ── Section 5 : Stats by Category ── */}
