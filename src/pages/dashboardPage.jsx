@@ -1,19 +1,58 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   getStats,
   getCategories,
   getSources,
   getStatsByCategory,
 } from "../services/api";
+// ── Animated StatCard ──
+const StatCard = ({ label, value, icon, suffix = "" }) => {
+  const [display, setDisplay] = useState(0);
+  const duration = 1500; // ms
+  const frameRate = 60;
+  const totalFrames = (duration / 1000) * frameRate;
 
-// ── Reusable StatCard ──
-const StatCard = ({ label, value, icon }) => (
-  <div className="bg-white rounded-2xl shadow p-5 flex flex-col gap-2 border border-green-100">
-    <span className="text-2xl">{icon}</span>
-    <span className="text-gray-500 text-sm">{label}</span>
-    <span className="text-green-800 font-bold text-xl">{value}</span>
-  </div>
-);
+  useEffect(() => {
+    // Extract numeric value
+    const numeric = parseFloat(value);
+    if (isNaN(numeric)) {
+      setDisplay(value);
+      return;
+    }
+
+    let frame = 0;
+    const counter = setInterval(() => {
+      frame++;
+      // Ease-out effect
+      const progress = 1 - Math.pow(1 - frame / totalFrames, 3);
+      const current = numeric * progress;
+
+      // Format based on value size
+      if (Number.isInteger(numeric)) {
+        setDisplay(Math.floor(current));
+      } else {
+        setDisplay(current.toFixed(2));
+      }
+
+      if (frame >= totalFrames) {
+        setDisplay(numeric % 1 === 0 ? numeric : numeric.toFixed(2));
+        clearInterval(counter);
+      }
+    }, 1000 / frameRate);
+
+    return () => clearInterval(counter);
+  }, [value]);
+
+  return (
+    <div className="bg-white rounded-2xl shadow p-5 flex flex-col gap-2 hover: border border-green-100">
+      <span className="text-2xl">{icon}</span>
+      <span className="text-gray-500 text-sm">{label}</span>
+      <span className="text-green-800 font-bold text-xl">
+        {display} {suffix}
+      </span>
+    </div>
+  );
+};
 
 // ── Reusable Badge ──
 const Badge = ({ label }) => (
@@ -121,21 +160,29 @@ export default function DashboardPage() {
           🌍 Statistiques globales
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <StatCard icon="📦" label="Total lots" value={stats.total_lots} />
+          <StatCard
+            icon="📦"
+            label="Total lots"
+            value={stats.total_lots}
+            suffix=""
+          />
           <StatCard
             icon="💶"
-            label="Prix moyen (€)"
-            value={`${stats.prix_moyen} €`}
+            label="Prix moyen"
+            value={stats.prix_moyen}
+            suffix="$"
           />
           <StatCard
             icon="💰"
-            label="Prix max (€)"
-            value={`${stats.prix_max} €`}
+            label="Prix max"
+            value={stats.prix_max}
+            suffix="$"
           />
           <StatCard
             icon="⚖️"
-            label="Poids moyen (kg)"
-            value={`${stats.poids_moyen} kg`}
+            label="Poids moyen"
+            value={stats.poids_moyen}
+            suffix="kg"
           />
         </div>
       </section>
@@ -221,12 +268,12 @@ export default function DashboardPage() {
               <StatCard
                 icon="💶"
                 label="Prix moyen"
-                value={`${catStats.prix_moyen} €`}
+                value={`${catStats.prix_moyen} $`}
               />
               <StatCard
                 icon="💰"
                 label="Prix max"
-                value={`${catStats.prix_max} €`}
+                value={`${catStats.prix_max} $`}
               />
               <StatCard
                 icon="⚖️"
