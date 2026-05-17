@@ -9,6 +9,13 @@ import {
   Legend,
 } from "recharts";
 import {
+  FaWineBottle,
+  FaNewspaper,
+  FaCogs,
+  FaLeaf,
+  FaBox,
+} from "react-icons/fa";
+import {
   getStats,
   getCategories,
   getSources,
@@ -94,12 +101,34 @@ const StatCard = ({
     </div>
   );
 };
+const categoryIcons = {
+  Plastique: <FaBox />,
+  Métal: <FaCogs />,
+  Verre: <FaWineBottle />,
+  Papier: <FaNewspaper />,
+  Organique: <FaLeaf />,
+};
+const Badge = ({ label, icon }) => (
+  <div
+    className="
+      flex items-center gap-2
+      bg-linear-to-r from-green-50 to-green-100
+      text-green-800
+      px-4 py-2
+      rounded-xl
+      text-sm
+      font-medium
+      border border-green-200
+      hover:scale-105
+      hover:shadow-md
+      transition-all duration-300
+      cursor-pointer
+    "
+  >
+    <span className="text-green-700 text-base">{icon}</span>
 
-// ── Reusable Badge ──
-const Badge = ({ label }) => (
-  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-    {label}
-  </span>
+    <span>{label}</span>
+  </div>
 );
 
 const DONUT_COLORS = [
@@ -330,7 +359,7 @@ export default function DashboardPage() {
           </h2>
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
-              <Badge key={cat} label={cat} />
+              <Badge key={cat} label={cat} icon={categoryIcons[cat]} />
             ))}
           </div>
         </div>
@@ -385,7 +414,7 @@ export default function DashboardPage() {
         {/* Category stats */}
         {!selectedCat && (
           <p className="text-gray-400 text-sm">
-            👆 Sélectionnez une catégorie pour voir ses statistiques
+            Sélectionnez une catégorie pour voir ses statistiques
           </p>
         )}
 
