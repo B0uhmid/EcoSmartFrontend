@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import brandLogo from "../assets/images/ecoSmart.svg";
 import {
   PieChart,
@@ -39,6 +39,7 @@ const StatCard = ({
     const numeric = parseFloat(value);
 
     if (isNaN(numeric)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDisplay(value);
       return;
     }
@@ -148,7 +149,7 @@ const DonutChart = ({ data, title }) => {
     value,
   }));
 
-  const activeItem = activeIndex !== null ? formattedData[activeIndex] : null;
+  //const activeItem = activeIndex !== null ? formattedData[activeIndex] : null;
 
   return (
     <div className="bg-white rounded-2xl shadow p-5 border border-green-100 h-105">
